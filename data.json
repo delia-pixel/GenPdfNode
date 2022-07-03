@@ -1,0 +1,21 @@
+{
+    "purchase_date":"2022-06-24",
+    "due_date": "2022-06-27",
+    "name": "Patricia",
+    "total": 6000,
+    "action_url": "http://localhost:3000",
+    "invoice_id": 1457,
+    "date": "2022-06-24",
+    "invoice_details":[
+        {
+        "description":"Glycérine végétale",
+        "amount": 2000
+        },
+        {
+        "description":"Acide MSM 100g",
+        "amount": 4000  
+        }
+
+    ],
+    "support_url": "https://support.com"
+}
