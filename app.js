@@ -9,16 +9,13 @@ var app = express();
 
 const data = require('./data.json');
 
-
+// compiling json data to html template with handlebars
 const compile = async function (template, data) {
     const filepath = path.join(process.cwd(), `${template}.html`);
     const html = await fs.readFile(filepath, 'utf-8');
     return hbs.compile(html)(data);
 }; 
 
-// hbs.registerHelper('dateFormat', function (value, format) {
-//     return moment(value).format(format);
-// });
 
 const getPDF = async  () => {
     try {
@@ -62,13 +59,12 @@ app.get('/pdf', async function (req, res) {
     await getPDF();
     res.contentType("application/pdf");
     const fileStream = fs.createReadStream(`${__dirname}/download/datapdf.pdf`);
-    console.log('############', __dirname);
     fileStream.on('open', () => {
         res.attachment('datapdf.pdf');
         fileStream.pipe(res);
     });
     fileStream.on('error', err => {
-        console.log(err);
+        res.send(err);
     })
         
 });
